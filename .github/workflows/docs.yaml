@@ -1,28 +1,28 @@
 name: Publish Sphinx Documentation
 
 on:
-  # release:
-  #  types: [published]
+  release:
+    types: [published]
 
-  #branches:
-  #    - main  # Build for the main branch
-  #    - 'release-v*' # Build for release branches (e.g., release-v1.0)
-  #tags:
-  #    - 'v*' # Build for tags (e.g., v1.0.0)
+  branches:
+      - main  # Build for the main branch
+      - 'release-v*' # Build for release branches (e.g., release-v1.0)
+  tags:
+      - 'v*' # Build for tags (e.g., v1.0.0)
   push:
 
 jobs:
   publish_sphinx_docs:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write # Required to push to gh-pages branch
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Important for sphinx-multiversion to see all branches/tags
       - uses: actions/setup-python@v3
         with:
-          python-version: "3.10"
+          python-version: "3.12"
       - name: Install dependencies
         run: |
           pip install -e .
@@ -33,10 +33,11 @@ jobs:
       - name: Create index.html
         run: |
           cp docs/_templates/gh-pages-redirect.html docs/_build/html/index.html
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_branch: gh-pages
+          publish_branch: gh-pages   # Or the branch configured for GitHub Pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/_build/html
-          force_orphan: true
+          force_orphan: true  # Cleans gh-pages branch before pushing
+

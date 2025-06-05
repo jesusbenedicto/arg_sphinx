@@ -1,8 +1,8 @@
 name: Publish Sphinx Documentation
 
 on:
-  release:
-    types: [published]
+  #release:
+  #  types: [published]
 
   branches:
       - main  # Build for the main branch

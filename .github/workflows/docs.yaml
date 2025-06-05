@@ -1,8 +1,15 @@
 name: Publish Sphinx Documentation
 
 on:
-  release:
-    types: [published]
+  # release:
+  #  types: [published]
+
+  #branches:
+  #    - main  # Build for the main branch
+  #    - 'release-v*' # Build for release branches (e.g., release-v1.0)
+  #tags:
+  #    - 'v*' # Build for tags (e.g., v1.0.0)
+  push:
 
 jobs:
   publish_sphinx_docs:

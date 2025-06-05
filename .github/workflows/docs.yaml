@@ -29,13 +29,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: public/
           force_orphan: true    
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_branch: gh-pages   # Or the branch configured for GitHub Pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_build/html
-          force_orphan: true  # Cleans gh-pages branch before pushing
-
+ 
 
       

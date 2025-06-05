@@ -19,6 +19,7 @@ extensions = [
     "sphinx.ext.githubpages",
 ]
 
+
 autoclass_content = 'both'
 
 templates_path = ['_templates']

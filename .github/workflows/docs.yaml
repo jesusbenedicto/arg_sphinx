@@ -33,7 +33,7 @@ jobs:
         pip install sphinx furo sphinx_multiversion
     - name: Build documentation with sphinx-multiversion
       run: |
-        sphinx-multiversion docs docs/_build/html
+        sphinx-multiversion docs _build/html
 
     
     - name: Create dynamic index.html with version links

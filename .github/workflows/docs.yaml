@@ -1,6 +1,4 @@
-name: Publish Sphinx Documentation
-
-name: Deploy Sphinx Multiversion Docs
+name: Publish Deploy Sphinx Multiversion Docs
 
 on:
   push:

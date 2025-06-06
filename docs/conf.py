@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'arg_sphinx'
-copyright = '2025, jbc'
+copyright = '2025 Eviden'
 author = 'jbc'
 
 # -- General configuration ---------------------------------------------------
@@ -37,18 +37,21 @@ html_sidebars = {
 }
 
 
-# -- Sphinx Multiversion --------------------------------------------------
+# -- Sphinx Multiversion config--------------------------------------------
 # https://holzhaus.github.io/sphinx-multiversion/master/configuration.html#
-# smv_tag_whitelist = r'^v\d+\.\d+\.\d+$'
-# smv_branch_whitelist = r'^.*$'
-# smv_remote_whitelist = r'^.*$'
+smv_tag_whitelist = r'^.*$'         # include all tags
+smv_branch_whitelist = r'^.*$'      # include all branches
+smv_remote_whitelist = r'^origin$'  # build only origin branches
+smv_released_pattern = r'^refs/tags/.*$'
 
+# Optional: Label format
+smv_label_format = '{ref.name}'  # e.g., "main", "v1.0"
 
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
 
-# -- Options for HTML output -------------------------------------------------
+# -- Options for HTML output ----------------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 #html_theme = 'alabaster'
@@ -57,3 +60,14 @@ html_theme = 'furo'   #PyPI Theme
 html_static_path = ['_static']
 
 html_favicon = "_static/favicon.ico"
+
+
+# Optional: HTML context for versions
+html_context = {
+    'display_github': True,
+    'github_user': 'your-org',
+    'github_repo': 'your-repo',
+    'github_version': 'main/docs/',
+    'versions': []
+}
+

@@ -40,7 +40,9 @@ html_sidebars = {
 # -- Sphinx Multiversion config--------------------------------------------
 # https://holzhaus.github.io/sphinx-multiversion/master/configuration.html#
 smv_tag_whitelist = r'^.*$'         # include all tags
-smv_branch_whitelist = r'^.*$'      # include all branches
+#smv_branch_whitelist = r'^.*$'      # include all branches
+smv_branch_whitelist = r'^(?!HEAD$).*$' 
+# Accept all branches except HEAD (detached head in CI) and temp branches
 smv_remote_whitelist = r'^origin$'  # build only origin branches
 smv_released_pattern = r'^refs/tags/.*$'
 
@@ -65,7 +67,7 @@ html_favicon = "_static/favicon.ico"
 # Optional: HTML context for versions
 html_context = {
     'display_github': True,
-    'github_user': 'your-org',
+    'github_user': 'Eviden',
     'github_repo': 'your-repo',
     'github_version': 'main/docs/',
     'versions': []

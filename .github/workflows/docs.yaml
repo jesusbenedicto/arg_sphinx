@@ -3,8 +3,9 @@ name: Publish Deploy Sphinx Multiversion Docs
 on:
   push:
     branches:
-      - main  # Build for the main branch
-      - 'release-v*' # Build for release branches (e.g., release-v1.0)
+      - '**'      # All branches
+      # - main  # Build for the main branch
+      # - 'release-v*' # Build for release branches (e.g., release-v1.0)
     tags:
       - 'v*' # Build for tags (e.g., v1.0.0)
   pull_request:

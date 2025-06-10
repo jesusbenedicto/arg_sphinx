@@ -7,6 +7,8 @@ on:
       - 'release-v*' # Build for release branches (e.g., release-v1.0)
     tags:
       - 'v*' # Build for tags (e.g., v1.0.0)
+  pull_request:
+    branches: ['**']  
 
 jobs:
   build_and_publish_docs:
@@ -19,7 +21,6 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0  # Needed by sphinx-multiversion to see all branches/tags
-
   
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -33,7 +34,6 @@ jobs:
     - name: Build documentation with sphinx-multiversion
       run: |
         sphinx-multiversion docs _build/html
-
     
     - name: Create dynamic index.html with version links
       run: |
